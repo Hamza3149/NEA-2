@@ -10,9 +10,9 @@
 
 {% block main %}
 <ul>
-  <li>1 - Alice</li>
-  <li>2 - Bob</li>
-  <li>3 - Charlie</li>
+    {% for user in users %}
+      <li>{{ user }}</li>
+    {% endfor %}
 </ul>
 
 
