@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block nav %}
+
+<button type="button" class="btn btn-outline-success and-all-other-classes">
+    <a href="/logout" style="color:blue"> logout </a>
+  </button>
+<h3> Welcome, you are logged in as {{ username }} </h3>
+{% endblock %}
+
+{% block main %}
+<ul>
+  <li>1 - Alice</li>
+  <li>2 - Bob</li>
+  <li>3 - Charlie</li>
+</ul>
+
+
+
+<button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbar" data-bs-toggle="collapse" type="button">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+{% endblock %}
