@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, session
+from flask import Flask, render_template, redirect, url_for, flash, session, request
 from flask_session import Session
 from functools import wraps
 import sqlite3
@@ -38,10 +38,8 @@ def login_required(f):
 def home():
     cursor.execute("SELECT username FROM users")
     users = cursor.fetchall()
-    print("users:",users)
     
-    return render_template("home.html",username=session["username"] , users=users)
-
+    return render_template("home.html", users=users)
 
 @app.route("/logout")
 @login_required
@@ -84,4 +82,3 @@ def login():
 
         flash("Incorrect username or password!")
     return render_template("login.html")
-
