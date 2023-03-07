@@ -8,8 +8,11 @@
 <h3> Welcome, you are logged in as {{ username }} </h3>
 {% endblock %}
 
+
 {% block main %}
+
 <ul>
+  
     {% for user in users %}
       <li>{{ user }}</li>
     {% endfor %}
