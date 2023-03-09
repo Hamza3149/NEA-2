@@ -11,10 +11,21 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"></script>
         <!-- https://favicon.io/emoji-favicons/money-bag/ -->
         <link href="/static/favicon.ico" rel="icon">
-        <link href="/static/styles.css" rel="stylesheet">
-        <title>Sixth Portal: Home</title>
+        <link href="/static/style.css" rel="stylesheet">
+        <title>Sixth Portal</title>
     </head>
     <body>
+
+        {% if message %}
+            {% if not messageType %}
+                {% set messageType = "danger" %}
+                {% set message = "Error: " + message %}
+            {% endif %}
+            <div class="alert alert-{{ messageType }} m-3">
+                {{ message|safe }}
+            </div>
+      {% endif %}
+
         <nav class="bg-light border navbar navbar-expand-md navbar-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="/"><span class="blue">S</span><span class="red">I</span><span class="yellow">X</span><span class="green">TH</span>
