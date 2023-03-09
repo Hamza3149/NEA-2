@@ -55,7 +55,7 @@ def login_required(f):
 def home():
     cursor.execute("SELECT username FROM users")
     users = cursor.fetchall()
-    print("users:",users)
+    #print("users:",users)
     
     return render_template('home.html',username=session["username"] , users=users)
 
