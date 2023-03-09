@@ -16,16 +16,6 @@
     </head>
     <body>
 
-        {% if message %}
-            {% if not messageType %}
-                {% set messageType = "danger" %}
-                {% set message = "Error: " + message %}
-            {% endif %}
-            <div class="alert alert-{{ messageType }} m-3">
-                {{ message|safe }}
-            </div>
-      {% endif %}
-
         <nav class="bg-light border navbar navbar-expand-md navbar-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="/"><span class="blue">S</span><span class="red">I</span><span class="yellow">X</span><span class="green">TH</span>
@@ -40,6 +30,16 @@
                 </div>
             </div>
         </nav>
+
+        {% if message %}
+            {% if not messageType %}
+                {% set messageType = "danger" %}
+                {% set message = "Error: " + message %}
+            {% endif %}
+            <div class="alert alert-{{ messageType }} m-3">
+                {{ message|safe }}
+            </div>
+        {% endif %}
 
         {% block main %}
 
