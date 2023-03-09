@@ -3,7 +3,6 @@ from flask_session import Session
 from functools import wraps
 import sqlite3
 
-
 app = Flask(__name__)
 
 app.config["SESSION_PERMENANT"] = False
