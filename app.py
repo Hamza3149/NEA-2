@@ -49,6 +49,8 @@ def logout():
 @app.route("/register", methods=["GET", "POST"])
 def register():
     session.clear()
+    if request.method == "GET":
+        return render_template("register.html")
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
@@ -57,7 +59,7 @@ def register():
         existing_users = cursor.fetchall()
 
         if len(existing_users) > 0:
-            flash("That username already exists")
+            render_template("register.html", message = "That username already exists")
         
         cursor.execute("INSERT INTO users (username, password) VALUES (?,?)",(username, password))
         conn.commit()
@@ -65,11 +67,14 @@ def register():
         session["username"] = username
 
         return redirect("/home")
+
     return render_template("register.html")
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
     session.clear()
+    if request.method == "GET":
+        return render_template("login.html")
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
@@ -78,6 +83,5 @@ def login():
         if len(user) > 0 and user[0][2] == password:
             session["username"] = request.form["username"]
             return redirect("/home")
-
-        flash("Incorrect username or password!")
-    return render_template("login.html")
+        print("not valid")
+        return render_template("login.html",message = "Incorrect username or password!")
