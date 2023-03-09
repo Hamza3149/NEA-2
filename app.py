@@ -38,11 +38,13 @@ def home():
     cursor.execute("SELECT username FROM users")
     users = cursor.fetchall()
     
+    cursor.execute("SELECT * FROM users WHERE username = ?",(session["username"], ))
+
     return render_template("home.html", users=users)
 
 @app.route("/logout")
-@login_required
 def logout():
+    """Logs out a logged in user"""
     session.clear()
     return redirect("/")
 
@@ -83,5 +85,4 @@ def login():
         if len(user) > 0 and user[0][2] == password:
             session["username"] = request.form["username"]
             return redirect("/home")
-        print("not valid")
-        return render_template("login.html",message = "Incorrect username or password!")
+        return render_template("login.html", message = "Incorrect username or password!")
