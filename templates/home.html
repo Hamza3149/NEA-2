@@ -160,8 +160,9 @@
      </div>
   </div>
 </div>
-<input value="{{ frees }}" type="hidden">
+<input value="{{ frees }}" type="text">
 <script>
+  let frees = []
   function is_free(element,day,period){
     if (element.style.backgroundColor === "red"){
       element.style.backgroundColor = "green";
