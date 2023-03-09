@@ -2,9 +2,8 @@
 
 {% block nav %}
 
-<button type="button" class="btn btn-outline-success and-all-other-classes" style="float: right;">
-    <a href="/logout">logout</a>
-  </button>
+<button class="btn btn-outline-success and-all-other-classes" onclick="location.href= '/logout'">Logout</button>
+
 {% endblock %}
 
 {% block main %}
@@ -20,7 +19,10 @@
 
 <h4>Your timetable</h4>
 <div class="container">
-  <div class="row">
+  <div class="row mt-2">
+    <div class="col-sm">
+      Period
+    </div>
     <div class="col-sm">
       Monday
     </div>
@@ -37,28 +39,135 @@
        Friday
      </div>
   </div>
-  <div class="row">
+  <div class="row mt-2">
     <div class="col-sm">
-      <button onclick="">Free</button>
+      1
     </div>
     <div class="col-sm">
-     Tuesday
+      <button onclick="is_free(this,'mon','p1')" style="background-color: red">Free</button>
     </div>
     <div class="col-sm">
-      Wednesday
+      <button onclick="is_free(this,'tue','p1')" style="background-color: red">Free</button>
     </div>
     <div class="col-sm">
-      Thursday
+      <button onclick="is_free(this,'wed','p1')" style="background-color: red">Free</button>
+    </div>
+    <div class="col-sm">
+      <button onclick="is_free(this,'thur','p1')" style="background-color: red">Free</button>
      </div>
      <div class="col-sm">
-       Friday
+      <button onclick="is_free(this,'fri','p1')" style="background-color: red">Free</button>
+     </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col-sm">
+      2
+    </div>
+    <div class="col-sm">
+      <button onclick="is_free(this,'mon','p2')" style="background-color: red">Free</button>
+    </div>
+    <div class="col-sm">
+      <button onclick="is_free(this,'tue','p2')" style="background-color: red">Free</button>
+    </div>
+    <div class="col-sm">
+      <button onclick="is_free(this,'wed','p2')" style="background-color: red">Free</button>
+    </div>
+    <div class="col-sm">
+      <button onclick="is_free(this,'thur','p2')" style="background-color: red">Free</button>
+     </div>
+     <div class="col-sm">
+      <button onclick="is_free(this,'fri','p2')" style="background-color: red">Free</button>
+     </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col-sm">
+      3
+    </div>
+    <div class="col-sm">
+      <button onclick="is_free(this,'mon','p3')" style="background-color: red">Free</button>
+    </div>
+    <div class="col-sm">
+      <button onclick="is_free(this,'tue','p3')" style="background-color: red">Free</button>
+    </div>
+    <div class="col-sm">
+      <button onclick="is_free(this,'wed','p3')" style="background-color: red">Free</button>
+    </div>
+    <div class="col-sm">
+      <button onclick="is_free(this,'thur','p3')" style="background-color: red">Free</button>
+     </div>
+     <div class="col-sm">
+      <button onclick="is_free(this,'fri','p3')" style="background-color: red">Free</button>
+     </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col-sm">
+      4
+    </div>
+    <div class="col-sm">
+      <button onclick="is_free(this,'mon','p4')" style="background-color: red">Free</button>
+    </div>
+    <div class="col-sm">
+      <button onclick="is_free(this,'tue','p4')" style="background-color: red">Free</button>
+    </div>
+    <div class="col-sm">
+      <button onclick="is_free(this,'wed','p4')" style="background-color: red">Free</button>
+    </div>
+    <div class="col-sm">
+      <button onclick="is_free(this,'thur','p4')" style="background-color: red">Free</button>
+     </div>
+     <div class="col-sm">
+      <button onclick="is_free(this,'fri','p4')" style="background-color: red">Free</button>
+     </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col-sm">
+      5
+    </div>
+    <div class="col-sm">
+      <button onclick="is_free(this,'mon','p5')" style="background-color: red">Free</button>
+    </div>
+    <div class="col-sm">
+      <button onclick="is_free(this,'tue','p5')" style="background-color: red">Free</button>
+    </div>
+    <div class="col-sm">
+      <button onclick="is_free(this,'wed','p5')" style="background-color: red">Free</button>
+    </div>
+    <div class="col-sm">
+      <button onclick="is_free(this,'thur','p5')" style="background-color: red">Free</button>
+     </div>
+     <div class="col-sm">
+      <button onclick="is_free(this,'fri','p5')" style="background-color: red">Free</button>
+     </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col-sm">
+      6
+    </div>
+    <div class="col-sm">
+      <button onclick="is_free(this,'mon','p6')" style="background-color: red">Free</button>
+    </div>
+    <div class="col-sm">
+      <button onclick="is_free(this,'tue','p6')" style="background-color: red">Free</button>
+    </div>
+    <div class="col-sm">
+      <button onclick="is_free(this,'wed','p6')" style="background-color: red">Free</button>
+    </div>
+    <div class="col-sm">
+      <button onclick="is_free(this,'thur','p6')" style="background-color: red">Free</button>
+     </div>
+     <div class="col-sm">
+      <button onclick="is_free(this,'fri','p6')" style="background-color: red">Free</button>
      </div>
   </div>
 </div>
 <input value="{{ frees }}" type="hidden">
 <script>
-  function is_free(day,period){
-    
+  function is_free(element,day,period){
+    if (element.style.backgroundColor === "red"){
+      element.style.backgroundColor = "green";
+    } else {
+      element.style.backgroundColor = "red";
+    }
   }
 </script>
 
