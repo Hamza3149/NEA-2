@@ -35,10 +35,13 @@ def login_required(f):
 @app.route("/home")
 @login_required
 def home():
+    print("hi")
     cursor.execute("SELECT username FROM users")
     users = cursor.fetchall()
     
     cursor.execute("SELECT * FROM users WHERE username = ?",(session["username"], ))
+    frees = cursor.fetchall()
+    print(frees)
 
     return render_template("home.html", users=users)
 
