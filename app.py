@@ -40,6 +40,8 @@ def home():
     
     cursor.execute("SELECT * FROM users WHERE username = ?",(session["username"], ))
     frees = cursor.fetchall()[0][3:]
+    frees = str(frees)
+    frees = frees[1:len(frees)-1]
 
     return render_template("home.html", users=users, frees=frees)
 
