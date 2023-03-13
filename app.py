@@ -32,9 +32,12 @@ def login_required(f):
         return f(*args, **kwargs)
     return decorated_function
 
-@app.route("/home")
+@app.route("/home",methods=["GET","POST"])
 @login_required
 def home():
+    if request.method == "POST":
+        print(request.form.get("timetable"))
+        print(request.form)
     cursor.execute("SELECT username FROM users")
     users = cursor.fetchall()
     
