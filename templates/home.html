@@ -163,7 +163,7 @@
 <div id="output"></div>
 
 <form method="POST" action="home">
-  <input value="{{ frees }}" id="timetable" type="text">
+  <input value="{{ frees }}" name="timetable" id="timetable" type="hidden">
   <button type="submit" class="btn btn-primary">Submit timetable</button>
 </form>
 
@@ -202,7 +202,7 @@
       element.innerHTML = "Lesson";
       frees[index] = "0"
     }
-    document.getElementById("output").innerHTML = frees.toString();
+    //document.getElementById("output").innerHTML = frees.toString();
     document.getElementById("timetable").value = frees.toString();
   }
 </script>

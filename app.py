@@ -37,7 +37,19 @@ def login_required(f):
 def home():
     if request.method == "POST":
         print(request.form.get("timetable"))
-        print(request.form)
+        timetable = request.form.get("timetable").split(",")
+        days = ["mon","tue","wed","thur","fri"]
+        periods = ["p1","p2","p3","p4","p5","p6"]
+        for day in days:
+            for period in periods:
+                index = 1
+                index *= days.index(day) * 5
+                index += periods.index(period)
+                if day != "mon":
+                    index += 1
+
+                cursor.execute(f"UPDATE users SET ({day}_{period})=? WHERE username=?",(timetable[index],session["username"]))
+        conn.commit()
     cursor.execute("SELECT username FROM users")
     users = cursor.fetchall()
     
