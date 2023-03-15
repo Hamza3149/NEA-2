@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+
+{% block nav %}
+<button class="btn btn-outline-success and-all-other-classes" onclick="location.href= '/dashboard'">dashboard</button>
+<button class="btn btn-outline-success and-all-other-classes" onclick="location.href= '/logout'">Logout</button>
+
+
+{% endblock %}
+
+{% block main %}
+
+<h3> Welcome, you are logged in as {{ session["username"] }} </h3>
+
+<ul>
+    <b>Existing users:</b>
+    {% for user in users %}
+      <li>{{ user[0] }}</li>
+    {% endfor %}
+</ul>
+
+<button class="btn btn-primary" onclick="location.href= '/create'">Create my timetable</button>
+<button class="btn btn-primary" onclick="location.href= '/view'">View my timetable</button>
+
+{% endblock %}

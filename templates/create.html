@@ -1,8 +1,9 @@
 {% extends "layout.html" %}
 
 {% block nav %}
-
+<button class="btn btn-outline-success and-all-other-classes" onclick="location.href= '/dashboard'">dashboard</button>
 <button class="btn btn-outline-success and-all-other-classes" onclick="location.href= '/logout'">Logout</button>
+
 
 {% endblock %}
 
@@ -162,26 +163,17 @@
 </div>
 <div id="output"></div>
 
-<form method="POST" action="home">
+<form method="POST">
   <input value="{{ frees }}" name="timetable" id="timetable" type="hidden">
   <button type="submit" class="btn btn-primary">Submit timetable</button>
 </form>
 
 
 <script>
-  /*
-      To-Do
-      change the correct value to 1 if the person is free
-      change the correct value to 0 if the person isn't free
-      Add a submit button to send the data to the server
-      Process and save the data to the database in the server
-  */
   let frees = document.getElementById("timetable").value;
   frees = frees.split(", ");
   let days = ["mon","tue","wed","thur","fri"];
   let periods = ["p1","p2","p3","p4","p5","p6"];
-  
-
   
   function is_free(element,day,period){
     let index = 1;

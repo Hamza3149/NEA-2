@@ -1,0 +1,170 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+<div class="container">
+    <div class="row mt-2">
+      <div class="col-sm">
+        Period
+      </div>
+      <div class="col-sm">
+        Monday
+      </div>
+      <div class="col-sm">
+       Tuesday
+      </div>
+      <div class="col-sm">
+        Wednesday
+      </div>
+      <div class="col-sm">
+        Thursday
+       </div>
+       <div class="col-sm">
+         Friday
+       </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-sm">
+        1
+      </div>
+      <div class="col-sm">
+        <button class="period"  onclick="is_free(this,'mon','p1')" style="background-color: red" value="0">Lesson</button>
+      </div>
+      <div class="col-sm">
+        <button class="period"  onclick="is_free(this,'tue','p1')" style="background-color: red" value="0">Lesson</button>
+      </div>
+      <div class="col-sm">
+        <button class="period"  onclick="is_free(this,'wed','p1')" style="background-color: red" value="0">Lesson</button>
+      </div>
+      <div class="col-sm">
+        <button class="period"  onclick="is_free(this,'thur','p1')" style="background-color: red" value="0">Lesson</button>
+       </div>
+       <div class="col-sm">
+        <button class="period"  onclick="is_free(this,'fri','p1')" style="background-color: red" value="0">Lesson</button>
+       </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-sm">
+        2
+      </div>
+      <div class="col-sm">
+        <button class="period"  onclick="is_free(this,'mon','p2')" style="background-color: red" value="0">Lesson</button>
+      </div>
+      <div class="col-sm">
+        <button class="period"  onclick="is_free(this,'tue','p2')" style="background-color: red" value="0">Lesson</button>
+      </div>
+      <div class="col-sm">
+        <button class="period"  onclick="is_free(this,'wed','p2')" style="background-color: red" value="0">Lesson</button>
+      </div>
+      <div class="col-sm">
+        <button class="period"  onclick="is_free(this,'thur','p2')" style="background-color: red" value="0">Lesson</button>
+       </div>
+       <div class="col-sm">
+        <button class="period"  onclick="is_free(this,'fri','p2')" style="background-color: red" value="0">Lesson</button>
+       </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-sm">
+        3
+      </div>
+      <div class="col-sm">
+        <button class="period"  onclick="is_free(this,'mon','p3')" style="background-color: red" value="0">Lesson</button>
+      </div>
+      <div class="col-sm">
+        <button class="period"  onclick="is_free(this,'tue','p3')" style="background-color: red" value="0">Lesson</button>
+      </div>
+      <div class="col-sm">
+        <button class="period"  onclick="is_free(this,'wed','p3')" style="background-color: red" value="0">Lesson</button>
+      </div>
+      <div class="col-sm">
+        <button class="period"  onclick="is_free(this,'thur','p3')" style="background-color: red" value="0">Lesson</button>
+       </div>
+       <div class="col-sm">
+        <button class="period"  onclick="is_free(this,'fri','p3')" style="background-color: red" disabled>Assembly</button>
+       </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-sm">
+        4
+      </div>
+      <div class="col-sm">
+        <button class="period"  onclick="is_free(this,'mon','p4')" style="background-color: red" value="0">Lesson</button>
+      </div>
+      <div class="col-sm">
+        <button class="period"  onclick="is_free(this,'tue','p4')" style="background-color: red" value="0">Lesson</button>
+      </div>
+      <div class="col-sm">
+        <button class="period"  onclick="is_free(this,'wed','p4')" style="background-color: red" value="0">Lesson</button>
+      </div>
+      <div class="col-sm">
+        <button class="period"  onclick="is_free(this,'thur','p4')" style="background-color: red" value="0">Lesson</button>
+       </div>
+       <div class="col-sm">
+        <button class="period"  onclick="is_free(this,'fri','p4')" style="background-color: red" value="0">Lesson</button>
+       </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-sm">
+        5
+      </div>
+      <div class="col-sm">
+        <button class="period"  onclick="is_free(this,'mon','p5')" style="background-color: red" value="0">Lesson</button>
+      </div>
+      <div class="col-sm">
+        <button class="period"  onclick="is_free(this,'tue','p5')" style="background-color: red" value="0">Lesson</button>
+      </div>
+      <div class="col-sm">
+        <button class="period"  onclick="is_free(this,'wed','p5')" style="background-color: red" value="0">Lesson</button>
+      </div>
+      <div class="col-sm">
+        <button class="period"  onclick="is_free(this,'thur','p5')" style="background-color: red" value="0">Lesson</button>
+       </div>
+       <div class="col-sm">
+        <button class="period"  onclick="is_free(this,'fri','p5')" style="background-color: red" value="0">Lesson</button>
+       </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-sm">
+        6
+      </div>
+      <div class="col-sm">
+        <button class="period"  onclick="is_free(this,'mon','p6')" style="background-color: red" value="0">Lesson</button>
+      </div>
+      <div class="col-sm">
+        <button class="period"  onclick="is_free(this,'tue','p6')" style="background-color: red" value="0">Lesson</button>
+      </div>
+      <div class="col-sm">
+        <button class="period"  onclick="is_free(this,'wed','p6')" style="background-color: red" value="0">Lesson</button>
+      </div>
+      <div class="col-sm">
+        <button class="period"  onclick="is_free(this,'thur','p6')" style="background-color: red" value="0">Lesson</button>
+       </div>
+       <div class="col-sm">
+        <button class="period"  onclick="is_free(this,'fri','p6')" style="background-color: red" value="0">Lesson</button>
+       </div>
+    </div>
+  </div>
+
+  <input value="{{ timetable }}" id="timetable" type="hidden">
+
+  <script>
+    const periods = document.getElementsByClassName("period");
+    let timetable = document.getElementById("timetable").value;
+    timetable = timetable.split(", ");
+    console.log(timetable);
+
+    console.log("hello"+periods);
+    console.log("element"+periods[0]);
+    console.log("value"+periods[0].value);
+
+    for (i in periods){
+        if (timetable[i-1] == "1"){
+            periods[i-1].style.backgroundColor = "green";
+            periods[i-1].innerHTML = "Free";
+        }
+    }
+
+  </script>
+
+
+{% endblock %}

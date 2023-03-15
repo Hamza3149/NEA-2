@@ -32,9 +32,19 @@ def login_required(f):
         return f(*args, **kwargs)
     return decorated_function
 
-@app.route("/home",methods=["GET","POST"])
+@app.route("/dashboard",methods=["GET","POST"])
 @login_required
-def home():
+def dashboard():
+    if request.method == "POST":
+        conn.commit()
+    cursor.execute("SELECT username FROM users")
+    users = cursor.fetchall()
+    return render_template("dashboard.html", users=users,)
+
+
+@app.route("/create",methods=["GET","POST"])
+@login_required
+def create():
     if request.method == "POST":
         print(request.form.get("timetable"))
         timetable = request.form.get("timetable").split(",")
@@ -58,7 +68,7 @@ def home():
     frees = str(frees)
     frees = frees[1:len(frees)-1]
 
-    return render_template("home.html", users=users, frees=frees)
+    return render_template("create.html", users=users, frees=frees)
 
 @app.route("/logout")
 def logout():
@@ -86,7 +96,7 @@ def register():
 
         session["username"] = username
 
-        return redirect("/home")
+        return redirect("/dashboard")
 
     return render_template("register.html")
 
@@ -102,5 +112,16 @@ def login():
         user = cursor.fetchall()
         if len(user) > 0 and user[0][2] == password:
             session["username"] = request.form["username"]
-            return redirect("/home")
+            return redirect("/dashboard")
         return render_template("login.html", message = "Incorrect username or password!")
+
+@app.route("/view")
+@login_required
+def view():
+
+    cursor.execute("SELECT * FROM users WHERE username = ?", (session["username"], ))
+    timetable = str(cursor.fetchall()[0][3:])
+    timetable = timetable[1:len(timetable)-1]
+    print(timetable)
+
+    return render_template("/view.html",timetable=timetable)
