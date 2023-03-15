@@ -55,6 +55,7 @@ def create():
                 index = 1
                 index *= days.index(day) * 5
                 index += periods.index(period)
+                
                 if day != "mon":
                     index += 1
 

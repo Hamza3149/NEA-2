@@ -157,11 +157,49 @@
     console.log("element"+periods[0]);
     console.log("value"+periods[0].value);
 
+    let day = 0;
+    let period = 0;
+    let index = 0;
+
     for (i in periods){
-        if (timetable[i-1] == "1"){
-            periods[i-1].style.backgroundColor = "green";
-            periods[i-1].innerHTML = "Free";
+        //console.log("array",day * 5 + period);
+        //console.log("i",i);
+
+        periods[i].click()
+        console.log("click index",index);
+
+        if (timetable[index] == "1"){
+            console.log("i",i);
+            console.log("index",index);
+            console.log(periods[i]);
+            periods[i].innerHTML = "Free";
+            periods[i].style.backgroundColor = "green";
         }
+
+        /*
+        if (timetable[i] == "1"){
+            console.log("b",periods[day + period * 5])
+            periods[day + period * 5].style.backgroundColor = "green";
+            periods[day + period * 5].innerHTML = "Free";
+        }
+        if (i % 5 == 0 && i != 0){
+            day += 1;
+            period = 0;
+        } else {
+            period += 1;
+        }
+        */
+
+    }
+    
+    function is_free(element, day, period){
+        const days = ["mon","tue","wed","thur","fri"];
+        const p = ["p1","p2","p3","p4","p5","p6"];
+
+        index = 1;
+        index *= days.indexOf(day) * 5;
+        index += p.indexOf(period);
+
     }
 
   </script>
