@@ -9,6 +9,8 @@
 
 {% block main %}
 
+<h3>This is {{username}} timetable</h3>
+
 <div class="container">
     <div class="row mt-2">
       <div class="col-sm">
@@ -160,10 +162,6 @@
     timetable = timetable.split(", ");
     console.log(timetable);
 
-    console.log("hello"+periods);
-    console.log("element"+periods[0]);
-    console.log("value"+periods[0].value);
-
     let day = 0;
     let period = 0;
     let index = 0;
@@ -174,11 +172,13 @@
 
         periods[i].click()
         console.log("click index",index);
+        console.log("element",periods[i]);
+
 
         if (timetable[index] == "1"){
             console.log("i",i);
             console.log("index",index);
-            console.log(periods[i]);
+            console.log("element changed",periods[i].onclick);
             periods[i].innerHTML = "Free";
             periods[i].style.backgroundColor = "green";
         }
@@ -204,9 +204,13 @@
         const p = ["p1","p2","p3","p4","p5","p6"];
 
         index = 1;
-        index *= days.indexOf(day) * 5;
-        index += p.indexOf(period);
+        index += days.indexOf(day) * 5;
+        index += p.indexOf(period) - 1;
 
+        if (day != "mon"){
+          index += 1;
+        }
+    
     }
 
   </script>

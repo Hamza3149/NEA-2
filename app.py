@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, flash, session, request
+from flask import Flask, render_template, redirect, url_for, flash, session, request, abort
 from flask_session import Session
 from functools import wraps
 import sqlite3
@@ -56,8 +56,8 @@ def create():
                 index *= days.index(day) * 5
                 index += periods.index(period)
                 
-                if day != "mon":
-                    index += 1
+               ## if day != "mon":
+                 ##   index += 1
 
                 cursor.execute(f"UPDATE users SET ({day}_{period})=? WHERE username=?",(timetable[index],session["username"]))
         conn.commit()
@@ -116,13 +116,20 @@ def login():
             return redirect("/dashboard")
         return render_template("login.html", message = "Incorrect username or password!")
 
-@app.route("/view")
+@app.route("/view", methods=["GET"])
 @login_required
 def view():
+    print("view called")
+    username = request.args.get("username", default = session["username"], type = str)
 
-    cursor.execute("SELECT * FROM users WHERE username = ?", (session["username"], ))
-    timetable = str(cursor.fetchall()[0][3:])
+    cursor.execute("SELECT * FROM users WHERE username = ?", (username, ))
+    timetable = cursor.fetchall()
+
+    if len(timetable) == 0:
+        return abort(400)
+
+    timetable = str(timetable[0][3:])
     timetable = timetable[1:len(timetable)-1]
     print(timetable)
 
-    return render_template("/view.html",timetable=timetable)
+    return render_template("/view.html",username=username,timetable=timetable)
