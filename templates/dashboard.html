@@ -15,7 +15,7 @@
 <ul>
     <b>Existing users:</b>
     {% for user in users %}
-      <li>{{ user[0] }}</li>
+      <li><a href="/view?username={{ user[0] }}">{{ user[0] }}</a></li>
     {% endfor %}
 </ul>
 
